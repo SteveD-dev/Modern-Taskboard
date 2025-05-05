@@ -1,0 +1,15 @@
+How It Works
+Task Filtering & Pagination Flow:
+
+Tasks → Filter → Sort → Paginate → Display
+
+Functionality:
+When you first load a page, only 2 tasks are shown
+Clicking "Load More" expands to show all tasks for that page (up to 10)
+Navigating to a new page resets to showing just 2 tasks initially
+All filtering and sorting happens before pagination
+
+Versatile Configuration:
+initialDisplayCount: Controls how many items to show initially (default: 2)
+itemsPerPage: Maximum items per page (set to 10 in Dashboard)
+showLoadMore: Toggle for "Load More" functionality

@@ -1,0 +1,52 @@
+How to Use the Theme
+Using UI Components
+
+import Button from './components/ui/Button';
+import Card from './components/ui/Card';
+import Input from './components/ui/Input';
+
+// Example usage of Button with variants
+<Button variant="primary">Submit</Button>
+<Button variant="danger" size="sm">Delete</Button>
+
+// Example usage of Card
+<Card hover>
+  <h3>Card Title</h3>
+  <p>Card content goes here</p>
+</Card>
+
+// Example usage of Input
+<Input 
+  label="Email" 
+  type="email" 
+  placeholder="Enter your email"
+  error={errors.email} 
+/>
+
+
+Accessing Theme Values Directly
+
+import { useTheme } from './components/ThemeProvider';
+
+function MyComponent() {
+  const theme = useTheme();
+  
+  return (
+    <div className={theme.components.card.default}>
+      <h2 className={theme.components.text.h2}>
+        Using Theme Values Directly
+      </h2>
+    </div>
+  );
+}
+
+Using Tailwind Classes
+The theme is incorporated into Tailwind, so you can use semantic color classes directly:
+
+<div className="bg-primary-500 text-white p-4">
+  A primary-colored box
+</div>
+
+<span className="text-danger-600 font-bold">
+  Error message
+</span>

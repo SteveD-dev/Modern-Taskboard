@@ -1,0 +1,76 @@
+# Dependencies
+node_modules
+/.pnp
+.pnp.js
+yarn.lock
+package-lock.json
+
+# Build outputs
+dist
+dist-ssr
+build
+*.local
+.netlify
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+/coverage
+.nyc_output
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.production
+.env.test
+
+# Cache and temp files
+.cache
+.parcel-cache
+.next
+.nuxt
+.vite
+.webpack
+.cache/
+.temp/
+.eslintcache
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumb.db
+
+# Supabase
+.supabase/
+supabase/.branches/
+supabase/.temp/
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# Optional: Generated files
+/src/components/ui/deployments.json
+
