@@ -2,7 +2,6 @@ import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from './ui/Modal';
 import type { User } from '@supabase/supabase-js';
-import { useTheme } from './ThemeProvider';
 import CustomButton from './ui/Button';
 import HelpTutorial from './HelpTutorial';
 
@@ -19,13 +18,12 @@ const Header: FC<HeaderProps> = ({
 }) => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showHelpTutorial, setShowHelpTutorial] = useState(false);
-  const theme = useTheme();
 
-  const handleLogout = () => {
-    if (onLogout) {
-      setShowLogoutModal(true);
-    }
-  };
+  // const handleLogout = () => {
+  //   if (onLogout) {
+  //     setShowLogoutModal(true);
+  //   }
+  // };
 
   return (
     <header className="bg-gradient-to-r from-primary-500 to-primary-800 shadow-md">

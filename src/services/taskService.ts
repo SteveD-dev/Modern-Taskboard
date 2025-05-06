@@ -82,8 +82,7 @@ export const addTask = async (title: string, userId: string): Promise<Task> => {
 
 export const updateTask = async (
   id: string,
-  updates: Partial<Pick<Task, 'title' | 'is_complete'>>,
-  userId?: string
+  updates: Partial<Pick<Task, 'title' | 'is_complete'>>
 ): Promise<Task> => {
   console.log('[Tasks] updateTask', id, updates)
   
@@ -101,7 +100,7 @@ export const updateTask = async (
   return data![0]
 }
 
-export const deleteTask = async (id: string, userId?: string): Promise<void> => {
+export const deleteTask = async (id: string): Promise<void> => {
   console.log('[Tasks] deleteTask', id)
   
   const { error } = await supabase

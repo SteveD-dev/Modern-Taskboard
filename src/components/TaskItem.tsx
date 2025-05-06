@@ -1,9 +1,7 @@
 import { FC, useState } from 'react';
 import type { Task } from '../services/taskServiceType';
-import { useTheme } from './ThemeProvider';
 import Modal from './ui/Modal';
 import TaskDetails from './TaskDetails';
-import CustomButton from './ui/Button';
 
 interface TaskItemProps {
   task: Task;
@@ -15,7 +13,6 @@ const TaskItem: FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [showToggleModal, setShowToggleModal] = useState(false);
-  const theme = useTheme();
   
   const formattedDate = new Date(task.created_at).toLocaleDateString('fr-FR', {
     day: 'numeric',

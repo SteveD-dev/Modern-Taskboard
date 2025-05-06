@@ -1,5 +1,4 @@
 import { FC, Fragment, ReactNode, useEffect } from 'react';
-import { useTheme } from '../ThemeProvider';
 
 export type ModalVariant = 'info' | 'success' | 'warning' | 'danger';
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -38,7 +37,7 @@ const Modal: FC<ModalProps> = ({
   className = '',
   footer,
 }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   // Handle escape key to close modal
   useEffect(() => {

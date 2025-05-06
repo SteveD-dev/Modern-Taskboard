@@ -1,7 +1,7 @@
 // ================================
 // src/stores/taskStore.ts
 // ================================
-import create from 'zustand'
+import {create } from 'zustand'
 import type { Task } from '../services/taskServiceType'
 import {
   fetchTasks as fetchTasksService,
@@ -9,7 +9,7 @@ import {
   updateTask as updateTaskService,
   deleteTask as deleteTaskService,
 } from '../services/taskService'
-import { useAuth } from '../hook/useAuth'
+import { supabase } from '../services/supabaseClient'
 
 interface TaskState {
   tasks: Task[]
@@ -35,13 +35,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
   filterStatus: 'all',
   sortOrder: 'desc',
 
-  loadTasks: async (userId) => {
+  loadTasks: async (userId?: string) => {
     set({ loading: true, error: null })
     try {
-      // If userId is not provided, try to get it from the auth hook
+      // If userId is not provided, try to get it from the current session
       if (!userId) {
-        const { user } = useAuth.getState()
-        userId = user?.id
+        const { data } = await supabase.auth.getSession()
+        userId = data.session?.user.id
       }
       
       if (userId) {
@@ -58,13 +58,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
   },
 
-  addTask: async (title, userId) => {
+  addTask: async (title: string, userId?: string) => {
     set({ loading: true, error: null })
     try {
-      // If userId is not provided, try to get it from the auth hook
+      // If userId is not provided, try to get it from the current session
       if (!userId) {
-        const { user } = useAuth.getState()
-        userId = user?.id
+        const { data } = await supabase.auth.getSession()
+        userId = data.session?.user.id
       }
       
       if (!userId) {
@@ -81,13 +81,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
   },
 
-  updateTask: async (id, updates, userId) => {
+  updateTask: async (id: string, updates: Partial<Pick<Task, 'title' | 'is_complete'>>, userId?: string) => {
     set({ loading: true, error: null })
     try {
-      // If userId is not provided, try to get it from the auth hook
+      // If userId is not provided, try to get it from the current session
       if (!userId) {
-        const { user } = useAuth.getState()
-        userId = user?.id
+        const { data } = await supabase.auth.getSession()
+        userId = data.session?.user.id
       }
       
       await updateTaskService(id, updates)
@@ -99,13 +99,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
   },
 
-  deleteTask: async (id, userId) => {
+  deleteTask: async (id: string, userId?: string) => {
     set({ loading: true, error: null })
     try {
-      // If userId is not provided, try to get it from the auth hook
+      // If userId is not provided, try to get it from the current session
       if (!userId) {
-        const { user } = useAuth.getState()
-        userId = user?.id
+        const { data } = await supabase.auth.getSession()
+        userId = data.session?.user.id
       }
       
       await deleteTaskService(id)

@@ -1,5 +1,4 @@
 import { FC, useState, useEffect } from 'react';
-import { useTheme } from '../ThemeProvider';
 import CustomButton from './Button';
 
 interface PaginationProps {
@@ -24,7 +23,7 @@ const Pagination: FC<PaginationProps> = ({
   className = '',
 }) => {
   const [showingAll, setShowingAll] = useState(false);
-  const theme = useTheme();
+  // const theme = useTheme();
   
   // Reset showingAll state when currentPage changes
   useEffect(() => {

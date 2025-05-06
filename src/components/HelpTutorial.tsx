@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import { useTheme } from './ThemeProvider';
 import Modal from './ui/Modal';
 import CustomButton from './ui/Button';
 
@@ -10,7 +9,7 @@ interface HelpTutorialProps {
 const HelpTutorial: FC<HelpTutorialProps> = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const tutorials = [
     {

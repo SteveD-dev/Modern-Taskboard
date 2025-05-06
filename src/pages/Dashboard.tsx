@@ -1,7 +1,6 @@
 import { useState, useEffect, FC } from 'react'
 import TaskForm from '../components/TaskForm'
 import TaskList from '../components/TaskList'
-import Card from '../components/ui/Card'
 import StatCard from '../components/ui/StatCard'
 import Pagination from '../components/ui/Pagination'
 import Footer from '../components/Footer'
@@ -18,10 +17,10 @@ const Dashboard: FC = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
-  const [initialDisplayCount, setInitialDisplayCount] = useState(3)
   const [showingFullPage, setShowingFullPage] = useState(false)
+  const INITIAL_DISPLAY_COUNT = 3
   const [expandedPages, setExpandedPages] = useState<Set<number>>(new Set())
-  const ITEMS_PER_PAGE = 5
+  const ITEMS_PER_PAGE = 3
   const [filterStatus, setFilterStatus] = useState<'all' | 'completed' | 'pending'>('all')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [searchQuery, setSearchQuery] = useState<string>('')
@@ -92,7 +91,7 @@ const Dashboard: FC = () => {
     if (showingFullPage) {
       return pageItems;
     } else {
-      return pageItems.slice(0, initialDisplayCount);
+      return pageItems.slice(0, INITIAL_DISPLAY_COUNT);
     }
   };
 
@@ -143,7 +142,7 @@ const Dashboard: FC = () => {
 
   const handleToggleTask = async (id: string, updates: { is_complete: boolean }) => {
     try {
-      await updateTask(id, updates, user?.id)
+      await updateTask(id, updates)
       
       // Update the tasks list
       setTasks(tasks.map(task => {
@@ -159,7 +158,7 @@ const Dashboard: FC = () => {
 
   const handleDeleteTask = async (id: string) => {
     try {
-      await deleteTask(id, user?.id)
+      await deleteTask(id)
       setTasks(tasks.filter(task => task.id !== id))
     } catch (err: any) {
       console.error('Error deleting task:', err)
@@ -266,7 +265,7 @@ const Dashboard: FC = () => {
                       currentPage={currentPage}
                       onPageChange={handlePageChange}
                       onLoadMore={handleLoadMore}
-                      initialDisplayCount={initialDisplayCount}
+                      initialDisplayCount={INITIAL_DISPLAY_COUNT}
                       showLoadMore={!showingFullPage}
                       className=""
                     />

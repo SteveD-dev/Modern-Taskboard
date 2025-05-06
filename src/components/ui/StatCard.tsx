@@ -1,6 +1,4 @@
 import { FC, ReactNode } from 'react';
-import { useTheme } from '../ThemeProvider';
-
 export type StatCardVariant = 'primary' | 'success' | 'warning' | 'danger' | 'info';
 
 interface StatCardProps {
@@ -18,7 +16,7 @@ const StatCard: FC<StatCardProps> = ({
   icon,
   className = '',
 }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
   
   // Map variants to appropriate colors
   const variantStyles = {
