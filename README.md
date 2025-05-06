@@ -15,4 +15,4 @@ VITE_SUPABASE_ANON_KEY=ANON_KEY_ICI
 npm run dev
 
 # Voir la démo en ligne (avec netlify)
-https://steady-flan-b9585b.netlify.app/login
+https://steady-flan-b9585b.netlify.app
